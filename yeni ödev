@@ -1,0 +1,25 @@
+import discord
+
+# ayricaliklar (intents) değişkeni botun ayrıcalıklarını depolayacak
+intents = discord.Intents.default()
+# Mesajları okuma ayrıcalığını etkinleştirelim
+intents.message_content = True
+# client (istemci) değişkeniyle bir bot oluşturalım ve ayrıcalıkları ona aktaralım
+client = discord.Client(intents=intents)
+
+@client.event
+async def on_ready():
+    print(f'{client.user} olarak giriş yaptık.')
+
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+    if message.content.startswith('$Geri_dönüşüm'):
+        await message.channel.send("İlk olarak yapmanız gerekenler evinize 6 tane çöp kutusu alın hepsinin üstüne yazılar yazın bunlar:Kağıt,Plastik,Metal,Cam;yiyecek,gübre Bu atık çöplerini evinizin en yakınındaki yerlere atın gübre atılarını ağaçlara,yemek atıklarını hayvanlara verin ")
+
+
+    else:
+        await message.channel.send(message.content)
+
+client.run("MTIyO!!!!!!!!!!!!!!!!!!!!!!!!!!!pOUidhLg!!!")
